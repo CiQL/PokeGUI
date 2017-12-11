@@ -154,8 +154,8 @@ public class PokeTree {
    
    Access private data field `root` to send to recursive method.
    */
-   public void printPokeTree() {
-      preorderPokeTree(root);
+   public String printPokeTree() {
+      return preorderPokeTree(root);
    }
    /**
    Recursive preorder traversal method.
@@ -164,14 +164,17 @@ public class PokeTree {
    
    @param base the root of the tree
    */
-   private void preorderPokeTree(PokeNode base) {
+   private String preorderPokeTree(PokeNode base) {
+      String result = "";
       if (base != null) {
-         System.out.println(" " + base.getPokemon().toString()
+         result += (" " + base.getPokemon().toString()
                             + "Caught: " + base.getNumCaught()
-                            + "\n");
-         preorderPokeTree(base.getLChild());
-         preorderPokeTree(base.getRChild());
+                            + "\n\n");
+         result += preorderPokeTree(base.getLChild());
+         result += preorderPokeTree(base.getRChild());
+         
       }
+      return result;
    }
    /** Rotates tree right.
    
